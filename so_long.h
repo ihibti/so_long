@@ -63,5 +63,9 @@ int			find_y(char **map, char c);
 int			find_x(char **map, char c);
 int			count_occur(char **map, char c);
 void		free_args(char *str1, char *str2);
+int			map_voids(char *str);
+int			res_siz(char **map);
+void		free_imgs(void *a, void *b, void *c, void *d);
+int			v_c(char *str);
 
 #endif

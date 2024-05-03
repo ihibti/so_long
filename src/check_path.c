@@ -6,7 +6,7 @@
 /*   By: ihibti <ihibti@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:55:48 by ihibti            #+#    #+#             */
-/*   Updated: 2024/02/16 18:22:06 by ihibti           ###   ########.fr       */
+/*   Updated: 2024/04/26 12:24:28 by ihibti           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ int	path_ok(char **map)
 	spread(map, ret, x, y);
 	free_error(map);
 	map = mapping(open("map.ber", O_RDONLY));
-	if (ret->c != count_c(map))
+	if (ret->c != count_occur(map, 'C'))
 		return (free_path(map, ret, depart));
-	if (ret->e != count_e(map))
+	if (ret->e != count_occur(map, 'E'))
 		return (free_path(map, ret, depart));
 	free_path(map, ret, depart);
 	return (0);
@@ -69,7 +69,7 @@ int	visit_p(char **map, int x, int y, t_count *count)
 	if (map[x][y] == 'E')
 	{
 		count->e = count->e + 1;
-		map[x][y] = 1;
+		map[x][y] = 'v';
 		return (1);
 	}
 	if (map[x][y] == 'C')

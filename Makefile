@@ -7,7 +7,9 @@ SRCS = src/main.c \
 	   libmlx.a \
 	   src/init_game.c \
 	   src/moves.c \
-	   src/extras.c 
+	   src/extras.c \
+	   src/check_map_ex.c \
+	   src/check_void.c
 
 OBJS = $(SRCS:.c=.o)
 

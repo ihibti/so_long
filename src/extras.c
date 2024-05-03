@@ -6,7 +6,7 @@
 /*   By: ihibti <ihibti@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 18:11:36 by ihibti            #+#    #+#             */
-/*   Updated: 2024/03/19 13:48:55 by ihibti           ###   ########.fr       */
+/*   Updated: 2024/04/23 10:18:03 by ihibti           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_point	*start_p(char **map)
 		return (NULL);
 	ret->y = find_x(map, 'P');
 	ret->x = find_y(map, 'P');
-	if (c_e == 1 && c_p == 1)
+	if (c_e == 1 && c_p == 1 && (count_occur(map, 'C') >= 1))
 		return (ret);
 	free(ret);
 	free_error(map);

@@ -6,7 +6,7 @@
 /*   By: ihibti <ihibti@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:55:38 by ihibti            #+#    #+#             */
-/*   Updated: 2024/03/18 23:05:12 by ihibti           ###   ########.fr       */
+/*   Updated: 2024/04/26 12:08:46 by ihibti           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	check_av(int ac, char **av)
 {
 	int	i;
+	int	fd;
 
 	if (ac != 2)
 		return (-1);
@@ -24,8 +25,10 @@ int	check_av(int ac, char **av)
 	i = i - 4;
 	if (ft_strncmp(av[1] + i, ".ber", 4) != 0)
 		return (-1);
-	if (open(av[1], O_RDONLY) == -1)
-		return (-1);
+	fd = open(av[1], O_RDONLY);
+	if (fd == -1)
+		return (close(fd), -1);
+	close(fd);
 	return (0);
 }
 
@@ -43,8 +46,8 @@ int	start_mlx(t_ori *ori)
 	}
 	if (init_solong(ori) == 0)
 	{
-		mlx_destroy_display(ori->mlx_ptr);
 		mlx_destroy_window(ori->mlx_ptr, ori->win);
+		mlx_destroy_display(ori->mlx_ptr);
 		free(ori->mlx_ptr);
 		return (0);
 	}

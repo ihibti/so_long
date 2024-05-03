@@ -6,7 +6,7 @@
 /*   By: ihibti <ihibti@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:55:45 by ihibti            #+#    #+#             */
-/*   Updated: 2024/03/19 13:49:04 by ihibti           ###   ########.fr       */
+/*   Updated: 2024/03/19 17:42:42 by ihibti           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@ int	init_solong(t_ori *ori)
 			&w, &h);
 	if (!ori->img_char || !ori->img_end || !ori->img_floor || !ori->img_limit
 		|| !ori->img_coin || !ori->img_terminate)
+	{
+		free_imgs(ori->img_char, ori->img_end, ori->img_floor, ori->mlx_ptr);
+		free_imgs(ori->img_coin, ori->img_terminate, ori->img_limit,
+			ori->mlx_ptr);
 		return (0);
+	}
 	return (1);
 }
 
